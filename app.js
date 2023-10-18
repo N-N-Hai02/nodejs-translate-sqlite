@@ -3,7 +3,7 @@ const path = require("path");
 const app = express();
 const sqlite3 = require("sqlite3").verbose();
 
-const db = new sqlite3.Database("D:/sqlite/db/translate_eg.db");
+const db = new sqlite3.Database("./db/translate_eg.db");
 
 // View Engine Setup
 app.set("views", path.join(__dirname, "views"));
