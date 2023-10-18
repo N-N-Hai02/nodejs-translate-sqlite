@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>View Engine Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<style>
+    h4 {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .form-group {
+        display: grid;
+        width: 50%;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <form method="POST" action="/insert">
+            <div class="form-group">
+                <label for="en">Nhập English:</label>
+                <input type="text" id="en" name="en" required>
+            </div>
+
+            <div class="form-group">
+                <label for="vn">Nhập Nghĩa:</label>
+                <input type="text" id="vn" name="vn" required>
+            </div>
+
+            <button type="submit" class="btn-outline-primary mt-2">Submit</button>
+        </form>
+        <hr />
+        <h4>Danh sách từ và nghĩa</h4>
+        <table class="table table-bordered border-primary">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>EN</th>
+                    <th>VN</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(function(row) { %>
+                    <tr>
+                        <td>
+                            <%= row.ID %>
+                        </td>
+                        <td>
+                            <%= row.en %>
+                        </td>
+                        <td>
+                            <%= row.vn %>
+                        </td>
+                        <td style="width: 150px;">
+                            <a href="/edit?id=<%= row.ID %>"><button class="btn-outline-warning p-2">Sửa</button></a>
+                            <form method="POST" action="/delete" class="d-inline">
+                                <input type="hidden" name="id" value="<%= row.ID %>">
+                                <button type="submit" class="btn-outline-danger p-2">Xóa</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

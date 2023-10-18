@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        h4 {
+            text-transform: uppercase;
+            color: green;
+        }
+
+        .form-group {
+            display: grid;
+            width: 50%;
+        }
+        label {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bg-dark">
+            <h4>chỉnh sửa từ</h4>
+            <form method="POST" action="/update">
+                <input type="hidden" name="id" value="<%= dataEdit.ID %>">
+                <div class="form-group">
+                    <label for="en">Nhập English:</label>
+                    <input type="text" id="en" name="en" required value="<%= dataEdit.en %>">
+                </div>
+    
+                <div class="form-group">
+                    <label for="vn">Nhập Nghĩa:</label>
+                    <input type="text" id="vn" name="vn" required value="<%= dataEdit.vn %>">
+                </div>
+    
+                <button type="submit" class="btn-outline-primary mt-2">Edit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
